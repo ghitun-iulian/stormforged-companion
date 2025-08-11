@@ -1,0 +1,9 @@
+:host {
+  background-color: var(--primary);
+  a {
+    &.active {
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

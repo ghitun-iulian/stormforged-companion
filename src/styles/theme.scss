@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("/assets/fonts/CinzelDecorative-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("/assets/fonts/CinzelDecorative-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("/assets/fonts/CinzelDecorative-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Merriweather Variable Font */
+@font-face {
+  font-family: "Merriweather";
+  src: url("/assets/fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900; /* variable font supports weight range */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Source Sans 3 Variable Font */
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/assets/fonts/SourceSans3-VariableFont_wght.ttf")
+    format("truetype-variations");
+  font-weight: 200 900; /* variable font weight range */
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #121318;
+  --surface: #1f2128;
+  --primary: #2e3142;
+  --secondary: #4a6fa5;
+  --accent: #bf935f;
+
+  --text: #d0cdc6;
+  --text-secondary: #9a988f;
+
+  --border: 1px solid var(--accent);
+  --shadow: rgba(0, 0, 0, 0.7);
+
+  --font-family-title: "Cinzel Decorative", serif;
+  --font-small-title: "Merriweather", serif;
+  --font-family-body: "Source Sans Pro", sans-serif;
+}
+
+h1 {
+  font-family: var(--font-family-title);
+  font-weight: 900; // uses Black
+}
+
+h2 {
+  font-family: var(--font-family-title);
+  font-weight: 700; // uses Bold
+}
+
+h3,
+h4,
+h5 {
+  font-family: var(--font-small-title);
+  font-weight: bold;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-family-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

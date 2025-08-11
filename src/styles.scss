@@ -1,0 +1,85 @@
+@use "./styles/flex.scss";
+@use "./styles/theme.scss";
+@use "./styles/light-theme.scss";
+@use "./styles/ui.scss";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$sizes: (
+  xs: 4px,
+  s: 8px,
+  m: 16px,
+  l: 32px,
+  xl: 64px,
+  xxl: 128px,
+);
+
+@each $name, $size in $sizes {
+  .pad-#{$name} {
+    padding: $size;
+  }
+  .padx-#{$name} {
+    padding-left: $size;
+    padding-right: $size;
+  }
+  .pady-#{$name} {
+    padding-top: $size;
+    padding-bottom: $size;
+  }
+  .mar-#{$name} {
+    margin: $size;
+  }
+  .marx-#{$name} {
+    margin-left: $size;
+    margin-right: $size;
+  }
+  .mary-#{$name} {
+    margin-top: $size;
+    margin-bottom: $size;
+  }
+
+  .gap-#{$name} {
+    gap: $size;
+  }
+
+  .top-#{$name} {
+    top: $size;
+  }
+  .left-#{$name} {
+    left: $size;
+  }
+  .right-#{$name} {
+    right: $size;
+  }
+  .bottom-#{$name} {
+    bottom: $size;
+  }
+}
+
+.svg {
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: var(--primary);
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.test {
+  border: 2px solid orange;
+}
+.test1 {
+  border: 2px solid lime;
+}
+.test2 {
+  border: 2px solid magenta;
+}
