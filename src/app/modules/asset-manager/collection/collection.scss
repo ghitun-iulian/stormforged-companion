@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s);
+  max-width: 280px;
+  gap: var(--m);
+  overflow-y: auto;
+
+  .items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--s);
+
+    .collection-item {
+      width: 80px;
+      aspect-ratio: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: var(--m);
+
+      img,
+      .svg {
+        padding: var(--s);
+        max-width: 100%;
+        max-height: 100%;
+        object-position: center;
+        object-fit: contain;
+      }
+
+      .svg {
+        fill: var(--accent);
+        padding: var(--m);
+      }
+
+      &:hover {
+        background-color: var(--primary);
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,1 +1,17 @@
-<p>collection works!</p>
+@if(collection$ | async; as collection) { @for(type of collection; track $index)
+{
+<div class="flex column noshrink">
+  <h2>{{ type.label }}</h2>
+  <div class="items">
+    @for(item of type.items; track $index) {
+    <div class="collection-item">
+      @if(item.filetype !== 'svg') {
+
+      <img [src]="item.path" alt="{{ item.label }}" />} @else {
+      <span [svgPath]="item.path"></span>
+      }
+    </div>
+    }
+  </div>
+</div>
+} }

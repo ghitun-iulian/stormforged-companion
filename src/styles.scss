@@ -9,15 +9,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+}
+
+:root {
+  --xs: 4px;
+  --s: 8px;
+  --m: 16px;
+  --l: 32px;
+  --xl: 64px;
+  --xxl: 128px;
 }
 
 $sizes: (
-  xs: 4px,
-  s: 8px,
-  m: 16px,
-  l: 32px,
-  xl: 64px,
-  xxl: 128px,
+  xs: var(--xs),
+  s: var(--s),
+  m: var(--m),
+  l: var(--l),
+  xl: var(--xl),
+  xxl: var(--xxl),
 );
 
 @each $name, $size in $sizes {
