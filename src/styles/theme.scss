@@ -53,11 +53,14 @@
   --text-secondary: #9a988f;
 
   --border: 1px solid var(--accent);
-  --shadow: rgba(0, 0, 0, 0.7);
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
   --font-family-title: "Cinzel Decorative", serif;
   --font-small-title: "Merriweather", serif;
   --font-family-body: "Source Sans Pro", sans-serif;
+
+  --mat-menu-container-color: var(--surface); // fallback to your surface variable
+  --mat-select-panel-background-color: var(--surface);
 }
 
 h1 {
@@ -82,4 +85,36 @@ body {
   color: var(--text);
   font-family: var(--font-family-body);
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+mat-form-field{ 
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    background-color: var(--primary);
+    border-radius: var(--s);
+  }
+
+  .mat-mdc-notch-piece {
+    border: none;
+    padding-left: var(--s);
+  }
+
+  input {
+    padding-left: var(--m) !important;
+  }
+
+}
+
+mat-select {
+  padding-right: var(--m);
+
+}
+
+.listbox {
+  background-color: var(--surface) !important;
+  z-index: 10 !important;
 }

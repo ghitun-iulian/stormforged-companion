@@ -1,0 +1,48 @@
+:host {
+  height: var(--size);
+  width: 100%;
+  position: relative;
+  box-sizing: content-box;
+  padding: var(--m) 0;
+
+  .hex {
+    position: absolute;
+  height: var(--size);
+    aspect-ratio: 1;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    overflow: hidden;
+    background-color: var(--accent);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.8));
+
+    clip-path: polygon(
+      50% 0%,
+      93.3% 25%,
+      93.3% 75%,
+      50% 100%,
+      6.7% 75%,
+      6.7% 25%
+    );
+
+    &.back {
+      display: none;
+      background-color: var(--bg);
+    }
+
+    &.show-back {
+      translate: -25% -50%;
+
+      &.back {
+        translate: -75% -50%;
+        display: flex;
+      }
+    }
+  }
+}

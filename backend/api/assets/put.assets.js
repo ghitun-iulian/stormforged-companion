@@ -1,9 +1,27 @@
-function updateAsset(db, res, id, asset) {
-    const { label, type, filetype, path, data } = asset;
-    const stmt = db.prepare('UPDATE assets SET label = ?, type = ?, filetype = ?, path = ?, data = ? WHERE id = ?');
-    const info = stmt.run(label, type, filetype, path, JSON.stringify(data || {}), id);
-    if (info.changes === 0) return res.status(404).json({ error: 'Asset not found' });
-    res.json({ updated: true });
+function updateAsset(db, res, req, id) {
+    try {
+
+        const { shape, type, metadata, data } = req.body;
+        const stmt = db.prepare(`
+        UPDATE assets 
+        SET shape = ?, type = ?, metadata = ?, data = ?
+        WHERE id = ?
+        `);
+
+        stmt.run(
+            shape,
+            type,
+            JSON.stringify(metadata),
+            JSON.stringify(data || {}),
+            id
+        );
+
+        return res.json({ id });
+
+    } catch (err) {
+        console.error("Error putting asset:", err);
+        return res.status(500).json({ error: "Internal server error" });
+    }
 }
 
 module.exports = updateAsset;

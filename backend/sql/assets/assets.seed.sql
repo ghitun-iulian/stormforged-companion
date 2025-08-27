@@ -1,4 +1,4 @@
-INSERT INTO assets (id, label, data) VALUES
-    ('seed', 'Seed asset', '{"test":"seed"}')
-ON CONFLICT (id) DO NOTHING;
+-- INSERT INTO assets (id, type, metadata, data) VALUES
+--     ('seed', 'Seed type', '{"test":"seed"}', '{"test":"seed"}')
+-- ON CONFLICT (id) DO NOTHING;
 

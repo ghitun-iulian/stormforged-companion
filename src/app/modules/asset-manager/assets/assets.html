@@ -1,1 +1,72 @@
-<p>assets works!</p>
+@if(state$ | async; as state ){
+<div class="filters flex aligned gap-m">
+    <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input #search matInput (input)="search$.next(search.value)" >
+        <button mat-icon-button matSuffix aria-label="Clear search" (click)="search.value=''; search$.next('')" [disabled]="!search.value">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button 
+    mat-icon-button 
+    [mat-menu-trigger-for]="shapes" 
+    [class.active-filter]="assetFilters.shape">
+        <mat-icon>category</mat-icon>
+    </button>
+
+    <button 
+    mat-icon-button 
+    [mat-menu-trigger-for]="types" 
+    [class.active-filter]="assetFilters.type">
+        <mat-icon>tune</mat-icon>
+    </button>
+
+    <mat-menu #shapes="matMenu">
+        <button 
+        mat-menu-item 
+        (click)="assetFilters = {shape:'', type:assetFilters.type}" 
+        [class.active-filter]="!assetFilters.shape">
+            All shapes
+        </button>
+
+        @for(shape of assetShapes; track $index){
+            <button 
+            mat-menu-item 
+            (click)="assetFilters = {shape, type:''}" 
+            [class.active-filter]="assetFilters.shape === shape">
+                {{ shape | titlecase }}
+            </button>
+        }
+    </mat-menu>
+
+    <mat-menu #types="matMenu">
+        <button 
+        mat-menu-item 
+        (click)="assetFilters = {type:'', shape:assetFilters.shape}" 
+        [class.active-filter]="!assetFilters.type">
+            All types
+        </button>
+        
+        @for(type of assetTypes; track $index){
+            <button 
+            mat-menu-item 
+            (click)="assetFilters = {type}" 
+            [class.active-filter]="assetFilters.type === type">
+                {{ type | titlecase }}
+            </button>
+        }
+    </mat-menu>
+</div>
+
+    <div class="assets flex-1 flex gap-m pad-m">
+        @for(asset of state.assets; track asset.id){
+            <div class="asset flex column" [class.active]="asset.id == state.selectedId"  (click)="selectAsset(asset.id!)">
+                <ng-template [ngTemplateOutlet]="asset.shape === 'hex' ? hex : card" [ngTemplateOutletContext]="{ $implicit: asset }"></ng-template>
+                <span>{{asset.metadata.label}}</span>
+            </div>
+        }
+        <ng-template #hex let-asset><hex [asset]="asset"></hex></ng-template>
+        <ng-template #card let-asset><card [asset]="asset"></card></ng-template>
+    </div>
+}

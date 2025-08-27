@@ -1,0 +1,38 @@
+:host {
+  // background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  gap: var(--s);
+  padding: var(--s) 0;
+  border-right: var(--border);
+
+  .shape {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--surface);
+  }
+
+  .shape-option {
+    text-align: center;
+    padding: var(--m);
+    border-radius: var(--s);
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--primary);
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    &:has(input[type="radio"]:checked) {
+      border: var(--border);
+    }
+  }
+
+  button {
+    &.active {
+      border: var(--border);
+    }
+  }
+}

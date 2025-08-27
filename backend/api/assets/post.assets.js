@@ -2,21 +2,22 @@ const { v4: uuidv4 } = require("uuid");
 
 function createAsset(db, req, res) {
   try {
-    const { label, type, filetype, path, data } = req.body;
+    const { shape, type, metadata, data } = req.body;
     const id = uuidv4();
+
     const stmt = db.prepare(`
-      INSERT INTO assets (id, label, type, filetype, path, data) 
-      VALUES (?, ?, ?, ?, ?, ?)
+      INSERT INTO assets (id, shape, type, metadata, data) 
+      VALUES (?, ?, ?, ?, ?)
       `);
 
-    const info = stmt.run(
+    stmt.run(
       id,
-      label,
+      shape,
       type,
-      filetype,
-      path,
+      JSON.stringify(metadata),
       JSON.stringify(data || {})
     );
+    
     return res.json({ id });
   } catch (err) {
     console.error("Error creating asset:", err);

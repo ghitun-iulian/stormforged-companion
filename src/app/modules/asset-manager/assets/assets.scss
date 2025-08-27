@@ -1,0 +1,35 @@
+:host {
+    .assets {
+        flex-wrap: wrap;
+        .asset{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: var(--m);
+            
+            height: 70mm;
+            aspect-ratio: 1;
+            flex-shrink: 0;
+            
+            &:hover {
+                background-color: var(--surface);
+            }
+            
+            &.active {
+                border: var(--border);
+            }
+        }
+    }
+
+    .filters {
+        .mat-mdc-menu-item{
+            background-color: var(--primary) !important;
+            &.active-filter {
+                background-color: var(--primary) !important;
+                color: red;
+            }
+
+        }
+    }
+}

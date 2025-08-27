@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:backend": "nodemon backend/index.js --watch backend",
+    "start:backend:reset": "nodemon backend/index.js --watch backend --reset-db",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -30,7 +31,7 @@
     "@angular/material": "^20.1.5",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
-    "rxjs": "~7.8.0",
+    "rxjs": "^7.8.0",
     "sql.js": "^1.13.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

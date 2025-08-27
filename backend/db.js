@@ -17,7 +17,7 @@ function initDatabase(resetDb) {
   runSqlFiles(db, [
     path.join(__dirname, "sql", "collection", "collection.table.sql"),
     path.join(__dirname, "sql", "assets", "assets.table.sql"),
-    path.join(__dirname, "sql", "assets", "assets.seed.sql"),
+    // path.join(__dirname, "sql", "assets", "assets.seed.sql"),
   ]);
 
   createCollectionSeed(db, assetsPath);
