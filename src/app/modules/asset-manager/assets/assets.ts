@@ -47,7 +47,8 @@ export class Assets {
 
   assets$: Observable<Asset<any>[]> = combineLatest({
     filters: this.assetFilters$,
-    search: this.search$.pipe(debounceTime(300))
+    search: this.search$.pipe(debounceTime(300)),
+    assetId: this.assetsService.selectedAsset$ // update when an asset is changed
   }).pipe(
     map((x: { filters: AssetFilters, search: string }) => ({ ...x.filters, search: x.search })),
     this.assetsService.assets$,

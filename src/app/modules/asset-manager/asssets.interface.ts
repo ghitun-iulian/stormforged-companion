@@ -1,4 +1,5 @@
 import { CardDataTypes, HexDataTypes } from '@common/interfaces';
+import { CollectionItem } from '@common/ui/collection-select/collection.interface';
 
 export enum AssetShape {
   HEX = 'hex',
@@ -23,19 +24,7 @@ export interface AssetMetadata {
   label: string;
   description?: string;
   printQty: number;
-  backImage?: string;
-  bgImage?: string;
+  backImage?: CollectionItem;
+  bgImage?: CollectionItem;
   size?: string;
-}
-
-export interface CollectionItem {
-  path: string;
-  label: string;
-  type: AssetShape;
-  filetype: string;
-}
-
-export interface CollectionGroup {
-  label: string;
-  items: CollectionItem[];
 }

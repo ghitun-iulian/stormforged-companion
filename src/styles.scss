@@ -83,6 +83,10 @@ $sizes: (
   }
 }
 
+.scroll-y {
+  overflow-y: auto;
+}
+
 .test {
   border: 2px solid orange;
 }

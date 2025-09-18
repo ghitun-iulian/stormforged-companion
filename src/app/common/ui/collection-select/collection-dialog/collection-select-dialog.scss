@@ -1,0 +1,62 @@
+// .collection-dialog {
+//   .header { display:flex; align-items:center; justify-content:space-between; }
+//   .grid { display:grid; grid-template-columns: repeat(auto-fill, 80px); gap:8px; margin-top:12px; }
+//   .cell { display:flex; flex-direction:column; align-items:center; padding:6px; border: none; background: transparent; cursor:pointer; }
+//   .cell img { width:64px; height:64px; object-fit:contain; border-radius:6px; background:var(--surface); }
+//   .label { font-size:12px; margin-top:6px; text-align:center; }
+// }
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  
+  background-color: var(--surface);
+  border-radius: var(--s);
+  border: var(--border);
+
+
+  .filter-button {
+    background-color: var(--primary);
+    border-radius: var(--s);
+    height: 100%;
+
+    &.active {
+      border: var(--border);
+    }
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--xxl), 1fr));
+    gap: var(--m);
+    padding: var(--m);
+    overflow-y: auto;
+    flex: 1;
+
+    .item{
+      cursor: pointer;
+      height: var(--xxl);
+      aspect-ratio: 1;
+      border-radius: var(--s);
+      overflow: hidden;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .svg {
+        fill: var(--accent);
+        outline: none
+      };
+      
+  }
+
+  }
+
+
+
+}

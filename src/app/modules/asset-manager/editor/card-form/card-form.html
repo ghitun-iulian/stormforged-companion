@@ -1,1 +1,61 @@
-<p>card-form works!</p>
+
+<ng-container [formGroup]="assetDataForm">
+
+@if(type === 'resource'){
+	<mat-form-field>
+		<mat-label>Resource</mat-label>
+		<input matInput formControlName="resource" />
+	</mat-form-field>
+}
+
+@if(type === 'event'){
+	<mat-form-field>
+		<mat-label>Title</mat-label>
+		<input matInput formControlName="title" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Art</mat-label>
+		<input matInput formControlName="art" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Description</mat-label>
+		<input matInput formControlName="description" />
+	</mat-form-field>
+}
+
+@if(type === 'storm'){
+	<mat-form-field>
+		<mat-label>Title</mat-label>
+		<input matInput formControlName="title" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Art</mat-label>
+		<input matInput formControlName="art" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Description</mat-label>
+		<input matInput formControlName="description" />
+	</mat-form-field>
+}
+
+@if(type === 'relic'){
+	<mat-form-field>
+		<mat-label>Title</mat-label>
+		<input matInput formControlName="title" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Art</mat-label>
+		<input matInput formControlName="art" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Description</mat-label>
+		<input matInput formControlName="description" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Disassemble</mat-label>
+		<input matInput formControlName="disassemble" />
+	</mat-form-field>
+	
+	<mat-slide-toggle formControlName="isPassive">Is Passive</mat-slide-toggle>
+}
+</ng-container>

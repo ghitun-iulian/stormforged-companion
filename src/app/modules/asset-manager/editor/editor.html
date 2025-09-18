@@ -1,22 +1,25 @@
 @if(state$ | async; as state){
 
-  @if(state.assetId){
     <div class="editor-tools flex pad-s gap-s">
-      <button class="flex-1" (click)="createAsset()">New</button>
-      <button class="flex-1" (click)="duplicateAsset()">Duplicate</button>
-      <button class="flex-1" (click)="deleteAsset()">Delete</button>
+      <button [class.disabled]="!state.assetId" class="flex-1" (click)="createAsset()">New</button>
+      <button [class.disabled]="!state.assetId" class="flex-1" (click)="duplicateAsset(state.asset)">Duplicate</button>
+      <button [class.disabled]="!state.assetId" class="flex-1" (click)="deleteAsset()">Delete</button>
     </div>
-  }
 
   <div class="shape flex column justified">
     <ng-template 
-    [ngTemplateOutlet]="state.asset.shape == 'hex' ? hexComponent : cardComponent"
+    [ngTemplateOutlet]="form.value.shape == 'hex' ? hexComponent : cardComponent"
     ></ng-template>
-    <ng-template #hexComponent> <hex [asset]="state.asset!" [showBack]="true" ></hex> </ng-template>
-    <ng-template #cardComponent> <card [asset]="state.asset!" [showBack]="true"></card> </ng-template>
+    
+    <ng-template #hexComponent>
+      <hex [asset]="state.asset!" [showBack]="true" [editorPreview]="true" ></hex> 
+    </ng-template>
+    <ng-template #cardComponent>
+      <card [asset]="state.asset!" [showBack]="true" [editorPreview]="true" ></card> 
+    </ng-template>
   </div>
 
-   <div class="flex column pad-s gap-m" [formGroup]="form">
+  <div class="form-container flex-1 flex column pad-s gap-m scroll-y" [formGroup]="form">
 
     <div class="flex gap-s">
       @for(assetShape of state.assetShapes; track $index){
@@ -30,6 +33,39 @@
       }
     </div>
 
+  
+
+    <ng-container [formGroup]="assetMetadata">
+      <mat-form-field>
+        <mat-label>Label</mat-label>
+        <input matInput formControlName="label" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <div class="flex gap-s">
+         <collection-select class="flex-1" formControlName="backImage"  controllerLabel="Back image"></collection-select>
+         <collection-select class="flex-1" formControlName="bgImage" controllerLabel="Background"></collection-select>
+      </div>
+
+      <div class="flex gap-s">
+        <mat-form-field class="flex-1">
+          <mat-label>Print Quantity</mat-label>
+          <input matInput formControlName="printQty" type="number" min="0" />
+        </mat-form-field>
+
+        <mat-form-field class="flex-1">
+          <mat-label>Size</mat-label>
+          <input matInput formControlName="size" type="number" min="0" />
+          <span matSuffix>mm</span>
+        </mat-form-field>
+      </div>
+
+    </ng-container>
+
     <mat-form-field >
       <mat-label>Asset Type</mat-label>
       <mat-select formControlName="type">
@@ -39,27 +75,9 @@
       </mat-select>
     </mat-form-field>
 
-    <ng-container [formGroup]="assetMetadata">
-      <mat-form-field>
-        <mat-label>Label</mat-label>
-        <input matInput formControlName="label" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Print Quantity</mat-label>
-        <input matInput formControlName="printQty" type="number" min="0" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Size</mat-label>
-        <input matInput formControlName="size" type="number" min="0" />
-        <span matSuffix>mm</span>
-      </mat-form-field>
-    </ng-container>
-
     <ng-template [ngTemplateOutlet]="state.asset.shape == 'hex' ? hexForm : cardForm"> </ng-template>
     <ng-template #hexForm> <hex-form [form]="form"></hex-form> </ng-template>
-    <ng-template #cardForm> <card-form [form]="form"></card-form> </ng-template>
+    <ng-template #cardForm> <card-form [form]="form"></card-form> </ng-template> 
 
   </div>
 

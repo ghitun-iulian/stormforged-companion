@@ -1,1 +1,31 @@
-<p>hex-form works!</p>
+@if(type$ | async; as type){
+  <!-- <ng-container >
+    <ng-container *ngTemplateOutlet="templates[type]"></ng-container>
+  </ng-container> -->
+}
+
+
+
+<ng-template #resource [formGroup]="assetDataForm">
+    <input formControlName="resources" placeholder="Resources">
+</ng-template>
+
+<ng-template #exploration [formGroup]="assetDataForm">
+  <input formControlName="icon" placeholder="Icon">
+</ng-template>
+
+<ng-template #tracker [formGroup]="assetDataForm">
+  <input formControlName="dial" placeholder="Dial">
+  <input formControlName="icon" placeholder="Icon">
+</ng-template>
+
+<ng-template #location [formGroup]="assetDataForm">
+  <input formControlName="icon" placeholder="Icon">
+  <input formControlName="dockingPoints" placeholder="Docking Points">
+</ng-template>
+
+<ng-template #platform [formGroup]="assetDataForm">
+  <input formControlName="level" type="number" placeholder="Level">
+  <input formControlName="icon" placeholder="Icon">
+  <input formControlName="dial" placeholder="Dial">
+</ng-template>

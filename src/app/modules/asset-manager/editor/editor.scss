@@ -1,8 +1,6 @@
 :host {
   // background-color: var(--surface);
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+  width: 300px;
   gap: var(--s);
   padding: var(--s) 0;
   border-right: var(--border);
@@ -15,7 +13,7 @@
 
   .shape-option {
     text-align: center;
-    padding: var(--m);
+    padding: var(--s) 0;
     border-radius: var(--s);
     cursor: pointer;
     user-select: none;
@@ -27,6 +25,12 @@
 
     &:has(input[type="radio"]:checked) {
       border: var(--border);
+    }
+  }
+
+  .form-container {
+    * {
+      flex-shrink: 0;
     }
   }
 

@@ -1,3 +1,10 @@
+*,
+*::after,
+*::before {
+   min-height: 0;
+  min-width: 0;
+}
+
 html,
 body {
   display: flex;
@@ -57,9 +64,9 @@ body {
     flex: $i;
   }
   .grow-#{$i} {
-    flex: $i;
+    flex-grow: $i;
   }
   .shrink-#{$i} {
-    flex: $i;
+    flex-shrink: $i;
   }
 }

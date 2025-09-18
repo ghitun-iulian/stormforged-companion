@@ -1,6 +1,5 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { Asset } from 'modules/asset-manager/asssets.interface';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'card',
@@ -10,11 +9,22 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 })
 export class Card {
 
-  @Input() set asset(asset: Asset<any>) {
-    this.asset$.next(asset);
-    this.size = (asset?.metadata?.size || '60') + 'mm';
-  };
-  @Input() showBack = false;
-  @HostBinding('style.--size') size!: string;
-  asset$ = new BehaviorSubject<null | Asset<any>>(null);
+  asset = input<Asset<any> | null>(null);
+  editorPreview = input(false);
+  showBack = input(false);
+
+  state = computed(() => {
+    const asset = this.asset();
+    const editorPreview = this.editorPreview();
+    const showBack = this.showBack();
+    let size = (asset?.metadata?.size ?? '60') + 'mm';
+    if (editorPreview) size = '60mm';
+
+    return {
+      asset,
+      showBack,
+      editorPreview,
+      size
+    };
+  });
 }

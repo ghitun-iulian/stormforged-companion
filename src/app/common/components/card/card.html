@@ -1,2 +1,14 @@
-<div [class.show-back]="showBack" class="game-card back"></div>
-<div [class.show-back]="showBack" class="game-card"></div>
+
+<div 
+    class="game-card back" 
+    [class.show-back]="state().showBack"
+    [style.--bgimg]="'url(' + asset()?.metadata?.backImage?.path + ')'" 
+    [style.--size]="state().size" 
+></div>
+
+<div 
+    class="game-card" 
+    [class.show-back]="state().showBack" 
+    [style.--bgimg]="'url(' + asset()?.metadata?.bgImage?.path + ')'"
+    [style.--size]="state().size" 
+></div>

@@ -1,6 +1,6 @@
 @if(state$ | async; as state ){
-<div class="filters flex aligned gap-m">
-    <mat-form-field>
+<div class="filters flex aligned gap-m pad-s">
+    <mat-form-field class="flex-1">
         <mat-label>Search</mat-label>
         <input #search matInput (input)="search$.next(search.value)" >
         <button mat-icon-button matSuffix aria-label="Clear search" (click)="search.value=''; search$.next('')" [disabled]="!search.value">
@@ -59,14 +59,14 @@
     </mat-menu>
 </div>
 
-    <div class="assets flex-1 flex gap-m pad-m">
-        @for(asset of state.assets; track asset.id){
-            <div class="asset flex column" [class.active]="asset.id == state.selectedId"  (click)="selectAsset(asset.id!)">
-                <ng-template [ngTemplateOutlet]="asset.shape === 'hex' ? hex : card" [ngTemplateOutletContext]="{ $implicit: asset }"></ng-template>
-                <span>{{asset.metadata.label}}</span>
-            </div>
-        }
-        <ng-template #hex let-asset><hex [asset]="asset"></hex></ng-template>
-        <ng-template #card let-asset><card [asset]="asset"></card></ng-template>
-    </div>
+<div class="assets flex-1 flex gap-m pad-m scroll-y">
+    @for(asset of state.assets; track asset.id){
+        <div class="asset flex column" [class.active]="asset.id == state.selectedId"  (click)="selectAsset(asset.id!)">
+            <ng-template [ngTemplateOutlet]="asset.shape === 'hex' ? hex : card" [ngTemplateOutletContext]="{ $implicit: asset }"></ng-template>
+            <span class="label">{{asset.metadata.printQty}} x {{asset.metadata.label}}</span>
+        </div>
+    }
+    <ng-template #hex let-asset><hex [asset]="asset"></hex></ng-template>
+    <ng-template #card let-asset><card [asset]="asset"></card></ng-template>
+</div>
 }

@@ -5,14 +5,14 @@ import {
   filter,
   map,
   Observable,
+  of,
   switchMap,
+  take,
   tap
 } from 'rxjs';
 import {
   Asset,
-  AssetFilters,
-  CollectionGroup,
-  CollectionItem
+  AssetFilters
 } from './asssets.interface';
 
 @Injectable()
@@ -38,9 +38,7 @@ export class AssetsService {
           .filter(([key, value]) => !!value)
           .forEach(([key, value]) => { params = params.append(key, String(value)) });
 
-        return this.http.get<Asset<any>[]>('/api/assets', { params }).pipe(
-          map((x) => x)
-        );
+        return this.http.get<Asset<any>[]>('/api/assets', { params })
       })
     );
   }
@@ -64,14 +62,28 @@ export class AssetsService {
     );
   }
 
+  deleteAsset$ = (x: Observable<string>) => {
+    return x.pipe(
+      switchMap((id) => {
+        const url = `/api/assets/${id}`;
+        return this.http.delete(url).pipe(
+          tap((x: any) => {
+            if (x.error) throw new Error(x.error);
+            this.selectedAsset = '';
+          })
+        );
 
-  collection$: Observable<CollectionGroup[]> = this.http
-    .get<CollectionItem[]>('/api/collection')
-    .pipe(
-      map((x) => {
-        return [] as CollectionGroup[];
       })
     );
+  }
 
+  duplicateAsset = (asset: Asset<any>) => {
+    asset = { ...asset };
+    delete asset.id;
+    asset.metadata.label += ' (Copy)';
+    return this.saveAsset$(of(asset)).pipe(
+      take(1)
+    ).subscribe();
+  }
 
 }

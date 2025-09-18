@@ -5,7 +5,7 @@ const chokidar = require("chokidar");
 
 function initDatabase(resetDb) {
   const dbPath = path.join(__dirname, "db.sqlite");
-  const assetsPath = path.join(__dirname, "../src/assets/game_assets");
+  const assetsPath = path.join(__dirname, "../src/assets/collection");
 
   if (resetDb && fs.existsSync(dbPath)) {
     fs.unlinkSync(dbPath);
@@ -63,7 +63,7 @@ function createCollectionSeed(db, assetsPath) {
         const label = path.basename(file, "." + filetype);
         const filePath = path.posix.join(
           "assets",
-          "game_assets",
+          "collection",
           folder.name,
           file
         );

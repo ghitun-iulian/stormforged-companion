@@ -17,7 +17,6 @@ export enum CardDataTypes {
 export interface ResourceCard {
   deck: Decks.RESOURCES;
   resource: GameResources;
-  bgImage: string;
 }
 
 export interface MapEventCard {

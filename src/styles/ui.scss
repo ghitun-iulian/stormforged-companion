@@ -2,10 +2,11 @@ button {
   background-color: var(--primary);
   color: var(--text);
   border: none;
-  padding: 0.6rem 1.2rem;
+  padding: var(--s) 0;
   border-radius: var(--xs);
   font-size: 1rem;
   cursor: pointer;
+  text-align: center;
   transition: background-color 0.3s ease;
   &.accent {
     background-color: var(--accent);

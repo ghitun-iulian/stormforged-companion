@@ -43,7 +43,7 @@
 }
 
 :root {
-  --bg: #121318;
+  --bg:#121318;
   --surface: #1f2128;
   --primary: #2e3142;
   --secondary: #4a6fa5;
@@ -53,6 +53,7 @@
   --text-secondary: #9a988f;
 
   --border: 1px solid var(--accent);
+  --border-highlight: 1px solid var(--text);
   --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
   --font-family-title: "Cinzel Decorative", serif;
@@ -94,7 +95,8 @@ mat-form-field{
   }
 
   .mat-mdc-text-field-wrapper {
-    background-color: var(--primary);
+    background-color: rgba(100, 148, 237, 0.05);
+    border: 1px solid var(--primary);
     border-radius: var(--s);
   }
 
@@ -104,17 +106,63 @@ mat-form-field{
   }
 
   input {
-    padding-left: var(--m) !important;
+    padding: 0 var(--m) !important;
   }
 
 }
 
 mat-select {
-  padding-right: var(--m);
+  padding: 0 var(--m);
 
 }
 
 .listbox {
   background-color: var(--surface) !important;
   z-index: 10 !important;
+}
+
+.mat-mdc-tooltip-surface {
+  background-color: var(--surface) !important;
+  color: var(--text);
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  box-shadow: var(--shadow);
+}
+
+* {
+  &::-webkit-scrollbar {
+    width: var(--m);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 99px;
+    border: 5px solid transparent;
+    background-clip: content-box;    
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+    background-clip: content-box;    
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+mat-dialog-container {
+  --mat-dialog-container-color: transparent !important;
+}
+
+mat-slide-toggle {
+  button {
+    background-color: var(--primary) !important;
+  }
 }

@@ -1,0 +1,11 @@
+<span class="controller-name">{{controllerLabel}}</span>
+
+<button class="preview" 
+[class.placeholder]="!collectionItem?.path" 
+[matTooltip]="collectionItem?.label"
+(click)="selectItem()"
+>
+    @if(collectionItem?.path){
+        <img [src]="collectionItem?.path" alt="selected" />
+    }
+</button>

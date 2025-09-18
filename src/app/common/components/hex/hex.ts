@@ -1,21 +1,30 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, computed, input } from '@angular/core';
 import { Asset } from 'modules/asset-manager/asssets.interface';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'hex',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './hex.html',
   styleUrl: './hex.scss',
 })
 export class Hex {
-  @Input() set asset(asset: Asset<any>) {
-    this.asset$.next(asset);
-    this.size = (asset?.metadata?.size || '50') + 'mm';
-  };
-  @Input() showBack = false;
-  @HostBinding('style.--size') size!: string;
+  asset = input<Asset<any> | null>(null);
+  editorPreview = input(false);
+  showBack = input(false);
 
-  asset$ = new BehaviorSubject<null | Asset<any>>(null);
+  state = computed(() => {
+    const asset = this.asset();
+    const editorPreview = this.editorPreview();
+    const showBack = this.showBack();
+    let size = (asset?.metadata?.size ?? '50') + 'mm';
+    if (editorPreview) size = '50mm';
 
+    return {
+      asset,
+      showBack,
+      editorPreview,
+      size
+    };
+  });
 }

@@ -1,4 +1,10 @@
 :host {
+
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
     .assets {
         flex-wrap: wrap;
         .asset{
@@ -7,10 +13,19 @@
             justify-content: center;
             cursor: pointer;
             border-radius: var(--m);
+            position: relative;
             
-            height: 70mm;
+            height: 75mm;
             aspect-ratio: 1;
             flex-shrink: 0;
+
+            .label {
+                position: absolute;
+                bottom: var(--s);
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
             
             &:hover {
                 background-color: var(--surface);
@@ -32,4 +47,6 @@
 
         }
     }
+
+    
 }
