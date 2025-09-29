@@ -1,0 +1,9 @@
+<div class="item flex aligned gap-m" (click)="selectItem()">
+    <span class="control-label">{{controlLabel}}</span>
+    <div class="icon" [collectionItem]="item"></div>
+    <div class="label flex-1">{{item.label}}.{{item.filetype}}</div>
+</div>
+
+@if(item.filetype === 'svg'){
+<input #color type="color" [value]="item.color" (input)="setColor(color.value)">
+}

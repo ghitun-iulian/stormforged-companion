@@ -22,6 +22,7 @@ export interface GraphicsConfig {
     cssClass?: string | null;
     altText?: string | null;
     backgroundSize?: 'cover' | 'contain' | 'auto';
+    overrideColor?: string;
 }
 
 export const DEFAULT_GRAPHICS_CONFIG: GraphicsConfig = {

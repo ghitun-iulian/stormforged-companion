@@ -11,6 +11,7 @@ import { filter } from 'rxjs/internal/operators/filter';
 import { ResourcePicker } from "@common/ui/resource-picker/resource-picker";
 import { CollectionSelect } from "@common/ui/collection-select/collection-select";
 import { CollectionType } from '@common/ui/collection-select/collection.interface';
+import { CollectionPicker } from "@common/ui/collection-picker/collection-picker";
 
 @Component({
   selector: 'hex-exploration-form',
@@ -20,7 +21,7 @@ import { CollectionType } from '@common/ui/collection-select/collection.interfac
     MatFormField,
     MatLabel,
     MatInput,
-    CollectionSelect
+    CollectionPicker
   ],
   templateUrl: './hex-exploration-form.html',
   styleUrl: './hex-exploration-form.scss',
@@ -39,7 +40,6 @@ export class HexExplorationForm implements ControlValueAccessor {
 
   form: FormGroup = this.fb.group({
     icon: [null, Validators.required],
-    color: [null]
   });
 
   private onChange: (v: ExplorationHexData | null) => void = () => { };

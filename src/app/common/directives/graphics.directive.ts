@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Directive, ElementRef, Input, computed, effect, inject, signal } from '@angular/core';
-import { primaryColor } from '@common/interfaces';
 import { CollectionItem2, DEFAULT_GRAPHICS_CONFIG, GraphicsConfig } from '@common/ui/collection-select/collection.interface';
 import { catchError, firstValueFrom, of } from 'rxjs';
 
@@ -12,11 +11,9 @@ export class GraphicsDirective {
   private http = inject(HttpClient);
   private static cache = new Map<string, string>();
 
-  // Signals
   private item = signal<CollectionItem2 | null>(null);
   private config = signal<Partial<GraphicsConfig> | null>(null);
 
-  // merged config
   private mergedConfig = computed(() => {
     return { ...DEFAULT_GRAPHICS_CONFIG, ...(this.config() ?? {}) };
   });
@@ -50,7 +47,7 @@ export class GraphicsDirective {
     const path = `assets/collection/${item.type}/${item.label}.${item.filetype}`;
 
     if (config.renderAs === 'svg') {
-      if (item.filetype == 'svg') await this.loadAndInjectSvg(path, host, item.color, config);
+      if (item.filetype == 'svg') await this.loadAndInjectSvg(path, host, item.color, this.mergedConfig());
       else this.renderImg(path, config, item.label, host);
     }
 
@@ -65,7 +62,10 @@ export class GraphicsDirective {
     img.classList.add(config.cssClass!);
     img.src = path;
     img.alt = config.altText ?? label;
-    this.applyDimmensions(img, config);
+    img.style.width = '100%';
+    img.style.height = '100%';
+
+    this.applyDimmensions(host, config);
     host.appendChild(img);
   }
 
@@ -90,9 +90,6 @@ export class GraphicsDirective {
 
   private async loadAndInjectSvg(path: string, host: HTMLElement, color: string, config: GraphicsConfig) {
     let svgContent!: string;
-
-    console.log('Loading SVG:', path);
-
 
     if (GraphicsDirective.cache.has(path))
       svgContent = GraphicsDirective.cache.get(path) ?? '';
@@ -120,10 +117,15 @@ export class GraphicsDirective {
     const svgElement = doc.documentElement;
 
     svgElement.classList.add(config.cssClass!);
+    svgElement.removeAttribute('width');
+    svgElement.removeAttribute('height');
 
-    svgElement.setAttribute('fill', color || primaryColor);
-    this.applyDimmensions(svgElement, config);
+    this.applyDimmensions(host, config);
+    console.log(config.overrideColor);
 
+    svgElement.setAttribute('fill', color);
+    svgElement.setAttribute('width', '100%');
+    svgElement.setAttribute('height', '100%');
     host.appendChild(svgElement);
   }
 

@@ -1,4 +1,4 @@
-import { CollectionItem } from '@common/ui/collection-select/collection.interface';
+import { CollectionItem, CollectionItem2 } from '@common/ui/collection-select/collection.interface';
 import { GameResources, HexIndexDial, ResourceItem } from './';
 
 export enum HexDataTypes {
@@ -15,7 +15,7 @@ export interface ResourceHexData {
 }
 
 export interface ExplorationHexData {
-  icon: CollectionItem;
+  icon: CollectionItem2;
   color: string;
 }
 
