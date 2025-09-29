@@ -14,6 +14,33 @@ export interface CollectionItem {
     filetype: string;
 }
 
+export interface GraphicsConfig {
+    renderAs?: 'svg' | 'img' | 'background' | 'element';
+    width?: string | number | null;
+    height?: string | number | null;
+    preserveAspectRatio?: boolean;
+    cssClass?: string | null;
+    altText?: string | null;
+    backgroundSize?: 'cover' | 'contain' | 'auto';
+}
+
+export const DEFAULT_GRAPHICS_CONFIG: GraphicsConfig = {
+    renderAs: 'svg',
+    width: null,
+    height: null,
+    preserveAspectRatio: true,
+    cssClass: 'graphic-element',
+    altText: null,
+    backgroundSize: 'contain',
+};
+
+export interface CollectionItem2 {
+    type: CollectionType;
+    label: string;
+    filetype: string;
+    color: string;
+}
+
 export interface CollectionGroup {
     label: string;
     items: CollectionItem[];

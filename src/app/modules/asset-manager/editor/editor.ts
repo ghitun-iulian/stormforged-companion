@@ -21,6 +21,8 @@ import { HexPlatformForm } from "./data-controls/hex-platform-form/hex-platform-
 import { HexLocationForm } from "./data-controls/hex-location-form/hex-location-form";
 import { HexExplorationForm } from "./data-controls/hex-exploration-form/hex-exploration-form";
 import { HexTrackerForm } from "./data-controls/hex-tracker-form/hex-tracker-form";
+import { CollectionItem2, CollectionType, GraphicsConfig } from '@common/ui/collection-select/collection.interface';
+import { GraphicsDirective } from '@common/directives';
 
 @Component({
   selector: 'editor',
@@ -44,7 +46,9 @@ import { HexTrackerForm } from "./data-controls/hex-tracker-form/hex-tracker-for
     HexPlatformForm,
     HexLocationForm,
     HexExplorationForm,
-    HexTrackerForm
+    HexTrackerForm,
+
+    GraphicsDirective
   ],
   templateUrl: './editor.html',
   styleUrl: './editor.scss',
