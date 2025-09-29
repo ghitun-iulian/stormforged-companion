@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { CollectionService } from '@common/services/collection.service';
 import { BehaviorSubject, tap } from 'rxjs';
-import { CollectionFilters, CollectionItem, CollectionType } from '../collection.interface';
+import { CollectionFilters, CollectionItem, CollectionItem2, CollectionType } from '../collection.interface';
 import { ImgDirective } from '@common/directives';
 
 @Component({
@@ -29,7 +29,7 @@ export class CollectionSelectDialog {
     private dialogRef = inject(MatDialogRef<CollectionSelectDialog>);
     private collectionService = inject(CollectionService);
 
-    item!: CollectionItem | null;
+    item!: CollectionItem | CollectionItem2 | null;
     set type(value: CollectionType) {
         if (!value) return;
         this.filters = { type: value };

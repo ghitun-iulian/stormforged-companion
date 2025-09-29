@@ -5,6 +5,11 @@
   padding: var(--s) 0;
   border-right: var(--border);
 
+  .test-directive {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
   .shape {
     width: 100%;
     aspect-ratio: 1;

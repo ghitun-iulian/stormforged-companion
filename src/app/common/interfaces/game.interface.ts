@@ -12,6 +12,7 @@ export enum HexDialIndexes {
 export type HexIndexDial = (string | number)[];
 
 export const primaryColor = '#2e3142'
+export const accentColor = '#bf935f'
 export const maxResources = 9;
 
 export enum GameResources {
