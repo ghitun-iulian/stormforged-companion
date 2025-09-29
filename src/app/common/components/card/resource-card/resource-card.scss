@@ -1,0 +1,9 @@
+:host {
+    width: 50%;
+    aspect-ratio: 1;
+    --fill-color: var(--primary);
+
+    .svg {
+        fill: var(--fill-color);
+    }
+}

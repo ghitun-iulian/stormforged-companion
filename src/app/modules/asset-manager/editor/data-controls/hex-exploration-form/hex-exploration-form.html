@@ -1,0 +1,9 @@
+<form [formGroup]="form" class="flex column gap-m">
+
+	<collection-select formControlName="icon" [collectionType]="iconCollectionType"></collection-select>
+
+	<mat-form-field>
+		<mat-label>Color</mat-label>
+		<input matInput formControlName="color" type="color">
+	</mat-form-field>
+</form>

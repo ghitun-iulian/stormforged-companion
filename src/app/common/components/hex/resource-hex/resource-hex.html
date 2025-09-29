@@ -1,1 +1,3 @@
-<p>resource-hex works!</p>
+@for(resource of resources(); track $index) {
+<span [imgPath]="`/assets/collection/icon/${resource}.svg`" [style.--fill-color]="data().color"></span>
+}

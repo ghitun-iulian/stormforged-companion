@@ -1,0 +1,11 @@
+<form [formGroup]="form" class="flex column gap-m">
+	<mat-form-field>
+		<mat-label>Level</mat-label>
+		<input matInput formControlName="level" type="number">
+	</mat-form-field>
+
+	<collection-select formControlName="icon" controllerLabel="Icon" [collectionType]="collectionType">
+	</collection-select>
+	<tracker-entries formControlName="dial"></tracker-entries>
+
+</form>

@@ -1,0 +1,50 @@
+:host {
+
+    display: flex;
+    flex-direction: column;
+    
+    button {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: var(--m);
+        padding: var(--s);
+        .svg {
+            height: 40px;
+            aspect-ratio: 1;
+            fill: var(--text);
+        }
+    }
+
+    
+}
+
+ .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-auto-rows: 50px;
+    gap: var(--s);
+    padding: var(--s);
+
+    .cell {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; 
+        border-radius: var(--s);
+        transition: background 0.2s ease;
+
+        .svg {
+            fill: var(--accent);
+        }
+
+        &:hover {
+            .svg { 
+                fill: var(--text); 
+            }
+        }
+    }
+
+}

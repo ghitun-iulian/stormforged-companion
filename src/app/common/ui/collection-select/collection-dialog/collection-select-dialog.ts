@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CollectionService } from '@common/services/collection.service';
 import { BehaviorSubject, tap } from 'rxjs';
 import { CollectionFilters, CollectionItem, CollectionType } from '../collection.interface';
-import { SvgDirective } from '@common/directives';
+import { ImgDirective } from '@common/directives';
 
 @Component({
     selector: 'collection-select-dialog',
@@ -20,7 +20,7 @@ import { SvgDirective } from '@common/directives';
         MatButtonModule,
         MatFormField,
         MatInputModule,
-        SvgDirective
+        ImgDirective
     ],
     providers: [CollectionService]
 })
@@ -29,31 +29,25 @@ export class CollectionSelectDialog {
     private dialogRef = inject(MatDialogRef<CollectionSelectDialog>);
     private collectionService = inject(CollectionService);
 
-    collectionTypes = Object.values(CollectionType);
-
-    filters$ = new BehaviorSubject<CollectionFilters>({
-        search: '',
-        type: CollectionType.BACKGROUND
-    });
-    set filters(value: Partial<CollectionFilters>) {
-        this.filters$.next({ ...this.filters$.value, ...value });
-    }
-
-    onSearch(text: string) {
-        this.filters = { search: text };
-    }
-
-
     item!: CollectionItem | null;
     set type(value: CollectionType) {
         if (!value) return;
         this.filters = { type: value };
     }
 
+    collectionTypes = Object.values(CollectionType);
+
+    filters$ = new BehaviorSubject<CollectionFilters>({
+        search: '',
+        type: this.item?.type || CollectionType.BACKGROUND
+    });
+    set filters(value: Partial<CollectionFilters>) {
+        this.filters$.next({ ...this.filters$.value, ...value });
+    }
+
+    onSearch(text: string) { this.filters = { search: text }; }
     items$ = this.filters$.pipe(this.collectionService.collection$)
 
-    pick(item: CollectionItem) { this.dialogRef.close(item); }
-
-
+    pick(item?: CollectionItem) { this.dialogRef.close(item || 'empty'); }
 
 }

@@ -1,4 +1,4 @@
-import { CardDataTypes, HexDataTypes } from '@common/interfaces';
+import { CardDataTypes, GameResources, HexDataTypes } from '@common/interfaces';
 import { CollectionItem } from '@common/ui/collection-select/collection.interface';
 
 export enum AssetShape {
@@ -28,3 +28,5 @@ export interface AssetMetadata {
   bgImage?: CollectionItem;
   size?: string;
 }
+
+export interface AssetResources extends Partial<Record<GameResources, number>> { }

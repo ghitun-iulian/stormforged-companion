@@ -1,1 +1,22 @@
-<p>location-hex works!</p>
+<div [imgPath]="data().icon?.path" [style.--icon-color]="data().color"></div>
+
+<div class="resources">
+    <div class="minor">
+        @for(r of data().minorReward; track r) {
+        @if(r.value > 1) {<span>{{r.value}}</span>}
+        <div class="resource" [imgPath]="`assets/collection/icon/${r.label}.svg`"></div>
+        }
+    </div>
+    <div class="major">
+        @for(r of data().majorReward; track r) {
+        @if(r.value > 1) {<span>{{r.value}}</span>}
+        <div class="resource" [imgPath]="`assets/collection/icon/${r.label}.svg`"></div>
+        }
+    </div>
+</div>
+
+<div class="docking-points">
+    @for(point of data().dockingPoints; track point) {
+    <div class="docking-point" [style.--index]="point"></div>
+    }
+</div>

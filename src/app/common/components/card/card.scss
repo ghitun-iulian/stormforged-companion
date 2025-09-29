@@ -5,6 +5,9 @@
   padding: var(--m) 0;
 
   .game-card {
+    align-items: center;
+    justify-content: center;
+    
     position: absolute;
     top: 50%;
     left: 50%;
@@ -13,9 +16,9 @@
     height: var(--size);
     aspect-ratio: 2/3;
 
-    display: flex;
-    flex-direction: column;
     border-radius: var(--m);
+
+    overflow: hidden;
 
     background-color: var(--accent);
     background-image: var(--bgimg);

@@ -1,0 +1,8 @@
+<div class="hex">
+</div>
+
+<div class="points">
+    @for (i of indexes; track i) {
+    <div class="point" [class.active]="dockingPoints.includes(i)" [style.--index]="i" (click)="editPoints(i)"></div>
+    }
+</div>

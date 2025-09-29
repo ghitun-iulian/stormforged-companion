@@ -24,8 +24,8 @@ export class AssetsService {
   set selectedAsset(id: string) { this.selectedAsset$.next(id); }
 
   asset$ = this.selectedAsset$.pipe(
-    filter((id) => !!id),
     switchMap((id) => {
+      if (!id) return of({} as Asset<any>);
       return this.http.get<Asset<any>>(`/api/assets/${id}`);
     }),
   );

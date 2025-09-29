@@ -1,1 +1,7 @@
-<p>tracker-hex works!</p>
+<span class="icon" [imgPath]="data().icon.path" [style.--icon-color]="data().color"></span>
+
+<div class="dial">
+    @for(d of data().dial; track $index){
+    <span class="dial-value" [style.--index]="$index">{{d}}</span>
+    }
+</div>

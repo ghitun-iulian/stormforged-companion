@@ -1,0 +1,6 @@
+<form [formGroup]="form" class="flex column gap-m">
+	<tracker-entries formControlName="dial"></tracker-entries>
+
+	<collection-select formControlName="icon" controllerLabel="Icon" [collectionType]="collectionType">
+	</collection-select>
+</form>

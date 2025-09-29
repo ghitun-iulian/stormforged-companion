@@ -1,4 +1,3 @@
-
 <div class="flex pad-s gap-s aligned">
   <mat-form-field class="flex-1">
     <mat-label>Search</mat-label>
@@ -6,26 +5,27 @@
   </mat-form-field>
 
   @for(type of collectionTypes; track $index){
-    <button class="filter-button" [class.active]="type === filters$.value.type" mat-button (click)="filters = {type}">
-      {{ type | titlecase }}
-    </button>
+  <button class="filter-button" [class.active]="type === filters$.value.type" mat-button (click)="filters = {type}">
+    {{ type | titlecase }}
+  </button>
   }
 
 </div>
 
 <div class="items">
 
+  <div class="item empty" (click)="pick()"></div>
+
   @for(item of items$ | async; track $index){
-    <div class="item" (click)="pick(item)">
-
-      @if(item.filetype === 'svg') {
-      <span svgPath="{{ item.path }}"></span>
-      }
-      @else {
-        <img [src]="item.path">
-      }
-
-      <span class="label">{{ item.label }}</span>
-    </div>
-  }
+  <div class="item" (click)="pick(item)">
+    @if(item.filetype === 'svg') {
+    <span imgPath="{{ item.path }}"></span>
+    }
+    @else {
+    <img [src]="item.path">
+    }
+    <span class="label">{{ item.label }}</span>
   </div>
+  }
+
+</div>

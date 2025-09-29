@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--xs);
+    width: 80%;
+    --fill-color: var(--primary);
+
+    .svg {
+        width: 33%;
+        aspect-ratio: 1;
+        fill: var(--fill-color);
+    }
+}

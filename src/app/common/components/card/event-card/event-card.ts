@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { EventCardData } from '@common/interfaces';
 
 @Component({
   selector: 'event-card',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './event-card.scss'
 })
 export class EventCard {
+
+  data = input.required<EventCardData>();
 
 }

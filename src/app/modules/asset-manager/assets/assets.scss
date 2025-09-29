@@ -6,18 +6,22 @@
     flex: 1;
 
     .assets {
-        flex-wrap: wrap;
-        .asset{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 75mm);
+        grid-auto-rows: 75mm;
+        gap: var(--m);
+        padding: var(--m);
+        justify-content: center;
+        overflow-y: auto;
+
+        .asset {
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             border-radius: var(--m);
             position: relative;
-            
-            height: 75mm;
             aspect-ratio: 1;
-            flex-shrink: 0;
 
             .label {
                 position: absolute;
@@ -26,11 +30,11 @@
                 right: 0;
                 text-align: center;
             }
-            
+
             &:hover {
                 background-color: var(--surface);
             }
-            
+
             &.active {
                 border: var(--border);
             }
@@ -38,8 +42,9 @@
     }
 
     .filters {
-        .mat-mdc-menu-item{
+        .mat-mdc-menu-item {
             background-color: var(--primary) !important;
+
             &.active-filter {
                 background-color: var(--primary) !important;
                 color: red;
@@ -48,5 +53,5 @@
         }
     }
 
-    
+
 }

@@ -66,12 +66,15 @@ export class CollectionSelect implements ControlValueAccessor {
       width: '50vw',
     });
 
-    ref.componentInstance.type = CollectionType.BACKGROUND;
+    ref.componentInstance.type = this.collectionItem?.type || CollectionType.BACKGROUND;
     ref.componentInstance.item = this.collectionItem;
 
     ref.afterClosed().pipe(
       filter(item => !!item),
-      tap((item) => this.setValue(item)),
+      tap((item) => {
+        if (item === 'empty') item = null;
+        this.setValue(item);
+      })
     ).subscribe()
   }
 

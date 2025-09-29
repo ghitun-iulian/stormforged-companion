@@ -1,0 +1,7 @@
+<div class="flex">
+    @for( t of dial; track $index) {
+    <mat-form-field class="flex-1">
+        <input matInput #entryInput [value]="t" (input)="changeEntry($index, entryInput.value)" />
+    </mat-form-field>
+    }
+</div>

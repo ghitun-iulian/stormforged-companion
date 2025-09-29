@@ -1,0 +1,15 @@
+<button [matMenuTriggerFor]="menu">
+    <div [imgPath]="'/assets/collection/icon/' + resource + '.svg'"></div>
+    <div class="label flex-1">{{(resource || "Select") | titlecase }}</div>
+</button>
+
+
+<mat-menu #menu="matMenu">
+    <div class="resources-grid">
+        @for(resource of resources; track $index){
+        <div class="cell" (click)="setValue(resource)">
+            <div [imgPath]="'/assets/collection/icon/' + resource + '.svg'"></div>
+        </div>
+        }
+    </div>
+</mat-menu>

@@ -1,0 +1,15 @@
+<form [formGroup]="form" class="flex column gap-m">
+
+	<collection-select formControlName="icon" [collectionType]="iconCollectionType"
+		controllerLabel="Icon"></collection-select>
+
+	<mat-form-field>
+		<mat-label>Color</mat-label>
+		<input matInput formControlName="color" type="color">
+	</mat-form-field>
+
+	<docking-points formControlName="dockingPoints"></docking-points>
+	<resources-selector formControlName="minorReward" label="Minor Reward"></resources-selector>
+	<resources-selector formControlName="majorReward" label="Major Reward"></resources-selector>
+
+</form>

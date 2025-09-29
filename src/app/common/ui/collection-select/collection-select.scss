@@ -6,21 +6,33 @@
 
     .preview {
         position: relative;
-        width:  100%;
+        width: 100%;
         aspect-ratio: 2/1;
         border-radius: var(--s);
         border: var(--border);
         background-color: var(--surface);
-        background-image: url('/assets/collection/icon/placeholder.svg');
-        background-repeat: no-repeat;
-        background-size: 40%;
-        background-position: center;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.empty {
+            background-image: url('/assets/collection/icon/placeholder.svg');
+            background-repeat: no-repeat;
+            background-size: 40%;
+            background-position: center;
+        }
 
         img {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+            object-position: center;
+            padding: var(--s);
         }
 
         &:hover {
@@ -28,4 +40,3 @@
         }
     }
 }
-

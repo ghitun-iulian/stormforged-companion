@@ -1,19 +1,17 @@
-<div 
-    class="hex back"
-    [class.show-back]="state().showBack" 
-    [style.--bg]="'url(' + asset()?.metadata?.backImage?.path + ')'"
-    [style.--size]="state().size"
-></div>
+<div class="hex back" [class.show-back]="state().showBack"
+    [style.--bg]="'url(' + asset()?.metadata?.backImage?.path + ')'" [style.--size]="state().size"></div>
 
-<div 
-    class="hex shadow"
-    [class.show-back]="state().showBack" 
-    [style.--size]="state().size"
-></div>
+<div class="hex shadow" [class.show-back]="state().showBack" [style.--size]="state().size"></div>
 
-<div 
-    class="hex"
-    [class.show-back]="state().showBack" 
-    [style.--bg]="'url(' + asset()?.metadata?.bgImage?.path + ')'"
-    [style.--size]="state().size" 
-></div>
+<div class="hex" [class.show-back]="state().showBack" [style.--bg]="'url(' + asset()?.metadata?.bgImage?.path + ')'"
+    [style.--size]="state().size">
+
+    @switch (asset()?.type) {
+    @case ('resource') {<resource-hex [data]="asset()?.data"></resource-hex>}
+    @case ('platform') {<platform-hex [data]="asset()?.data"></platform-hex>}
+    @case ('exploration') {<exploration-hex [data]="asset()?.data"></exploration-hex>}
+    @case ('tracker') {<tracker-hex [data]="asset()?.data"></tracker-hex>}
+    @case ('location') {<location-hex [data]="asset()?.data"></location-hex>}
+    }
+
+</div>

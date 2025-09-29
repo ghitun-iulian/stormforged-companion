@@ -1,1 +1,18 @@
-<p>relic-card works!</p>
+<div [style.--art-image]="`url('${data().art.path}')`" class="art flex-1">
+
+	<div class="disassemble">
+		@for(resource of data().disassemble; track $index) {
+		<div class="resource flex gap-xs">
+			<span class="count">{{resource.value}}</span>
+			<span [imgPath]="`assets/collection/icon/${resource.label}.svg`"></span>
+		</div>
+		}
+	</div>
+
+</div>
+
+<h2 class="title">{{data().title}}</h2>
+
+<div class="description flex-1">
+	{{data().description}}
+</div>

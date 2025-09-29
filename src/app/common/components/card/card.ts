@@ -1,9 +1,13 @@
 import { Component, computed, input } from '@angular/core';
 import { Asset } from 'modules/asset-manager/asssets.interface';
+import { ResourceCard } from "./resource-card/resource-card";
+import { EventCard } from "./event-card/event-card";
+import { StormCard } from "./storm-card/storm-card";
+import { RelicCard } from "./relic-card/relic-card";
 
 @Component({
   selector: 'card',
-  imports: [],
+  imports: [ResourceCard, EventCard, StormCard, RelicCard],
   templateUrl: './card.html',
   styleUrl: './card.scss',
 })

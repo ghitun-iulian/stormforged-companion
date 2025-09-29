@@ -1,1 +1,1 @@
-export * from './svg.directive';
+export * from './img.directive';

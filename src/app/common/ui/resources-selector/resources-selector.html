@@ -1,0 +1,35 @@
+<span class="label">{{ label() }}</span>
+
+@for(resource of resourceList; track resource) {
+<div class="resource flex">
+    <div [imgPath]="`assets/collection/icon/${resource.label}.svg`"></div>
+
+    <div class="flex gap-s flex-1 aligned justified">
+        <button mat-mini-fab (click)="changeResourceValue(resource.label, -1)">
+            <mat-icon>remove</mat-icon>
+        </button>
+        <input #count [max]="maxResources" type="number" min="1" step="1" [value]="resource.value"
+            (input)="changeResourceValue(resource.label, count.valueAsNumber , true)">
+        <button mat-mini-fab (click)="changeResourceValue(resource.label, 1)">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <button mat-mini-fab class="discrete" (click)="removeResource(resource.label)">
+        <mat-icon>delete</mat-icon>
+    </button>
+
+</div>
+}
+
+<button class="newResource" [matMenuTriggerFor]="menu"><mat-icon>add</mat-icon></button>
+
+<mat-menu #menu="matMenu">
+    <div class="resources-grid">
+        @for(resource of gameResources; track $index){
+        <div class="cell" (click)="newResource(resource)">
+            <div [imgPath]="resource ? '/assets/collection/icon/' + resource + '.svg' : null"></div>
+        </div>
+        }
+    </div>
+</mat-menu>

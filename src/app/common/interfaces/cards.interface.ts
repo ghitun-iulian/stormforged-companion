@@ -1,11 +1,6 @@
-import { GameResources } from '@common/interfaces';
+import { AssetResources, GameResources, ResourceItem } from '@common/interfaces';
+import { CollectionItem } from '@common/ui/collection-select/collection.interface';
 
-export enum Decks {
-  RESOURCES = 'resources',
-  RELICS = 'relics',
-  EVENTS = 'events',
-  STORM = 'storm',
-}
 
 export enum CardDataTypes {
   RESOURCE = 'resource',
@@ -14,30 +9,27 @@ export enum CardDataTypes {
   RELIC = 'relic',
 }
 
-export interface ResourceCard {
-  deck: Decks.RESOURCES;
+export interface ResourceCardData {
   resource: GameResources;
+  color?: string;
 }
 
-export interface MapEventCard {
-  deck: Decks.EVENTS;
+export interface EventCardData {
   title: string;
-  art: string;
+  art: CollectionItem;
   description: string;
 }
 
-export interface StormEventCard {
-  deck: Decks.STORM;
+export interface StormCardData {
   title: string;
-  art: string;
+  art: CollectionItem;
   description: string;
 }
 
-export interface RelicCard {
-  deck: Decks.RELICS;
+export interface RelicCardData {
   title: string;
-  art: string;
+  art: CollectionItem;
   description: string;
-  disassemble: GameResources[];
+  disassemble: ResourceItem[];
   isPassive: boolean;
 }

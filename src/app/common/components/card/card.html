@@ -2,13 +2,20 @@
 <div 
     class="game-card back" 
     [class.show-back]="state().showBack"
-    [style.--bgimg]="'url(' + asset()?.metadata?.backImage?.path + ')'" 
+    [style.--bgimg]="`url('${asset()?.metadata?.backImage?.path}')`"
     [style.--size]="state().size" 
 ></div>
 
 <div 
-    class="game-card" 
+    class="game-card flex column" 
     [class.show-back]="state().showBack" 
-    [style.--bgimg]="'url(' + asset()?.metadata?.bgImage?.path + ')'"
+    [style.--bgimg]="`url('${asset()?.metadata?.bgImage?.path}')`"
     [style.--size]="state().size" 
-></div>
+>
+    @switch (asset()?.type) {
+        @case('resource'){<resource-card [data]="asset()?.data"></resource-card>}
+        @case('event'){<event-card [data]="asset()?.data"></event-card>}
+        @case('storm'){<storm-card [data]="asset()?.data"></storm-card>}
+        @case('relic'){<relic-card [data]="asset()?.data"></relic-card>}
+    }
+</div>

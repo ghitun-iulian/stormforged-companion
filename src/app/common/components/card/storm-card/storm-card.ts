@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { StormCardData } from '@common/interfaces';
 
 @Component({
   selector: 'storm-card',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './storm-card.scss'
 })
 export class StormCard {
-
+  data = input.required<StormCardData>();
 }

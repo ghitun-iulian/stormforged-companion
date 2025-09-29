@@ -1,0 +1,10 @@
+<form [formGroup]="form" class="flex column gap-m">
+
+
+	<resources-selector formControlName="resources" label="Resources"></resources-selector>
+
+	<mat-form-field>
+		<mat-label>Color</mat-label>
+		<input matInput formControlName="color" type="color">
+	</mat-form-field>
+</form>

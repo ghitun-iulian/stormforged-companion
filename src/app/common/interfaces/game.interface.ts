@@ -1,4 +1,18 @@
-export type HexIndexDial = Array<0 | 1 | 2 | 3 | 4 | 5>;
+
+export enum HexDialIndexes {
+  ZERO = 0,
+  ONE = 1,
+  TWO = 2,
+  THREE = 3,
+  FOUR = 4,
+  FIVE = 5
+}
+
+
+export type HexIndexDial = (string | number)[];
+
+export const primaryColor = '#2e3142'
+export const maxResources = 9;
 
 export enum GameResources {
   WOOD = 'wood',
@@ -8,4 +22,9 @@ export enum GameResources {
   BIOMASS = 'biomass',
   CHEMS = 'chems',
   RELIC = 'relic',
+}
+
+export interface ResourceItem {
+  label: GameResources;
+  value: number;
 }

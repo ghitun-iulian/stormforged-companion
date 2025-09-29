@@ -59,7 +59,7 @@
     </mat-menu>
 </div>
 
-<div class="assets flex-1 flex gap-m pad-m scroll-y">
+<div class="assets gap-m pad-m scroll-y">
     @for(asset of state.assets; track asset.id){
         <div class="asset flex column" [class.active]="asset.id == state.selectedId"  (click)="selectAsset(asset.id!)">
             <ng-template [ngTemplateOutlet]="asset.shape === 'hex' ? hex : card" [ngTemplateOutletContext]="{ $implicit: asset }"></ng-template>

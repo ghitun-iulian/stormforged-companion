@@ -1,0 +1,22 @@
+<form [formGroup]="form"
+	class="flex column gap-m">
+	<mat-form-field>
+		<mat-label>Title</mat-label>
+		<input matInput
+			formControlName="title">
+	</mat-form-field>
+
+
+	<collection-select [collectionType]="collectionType"
+		class="flex-1"
+		formControlName="art"
+		controllerLabel="Art">
+	</collection-select>
+
+
+	<mat-form-field>
+		<mat-label>Description</mat-label>
+		<input matInput
+			formControlName="description">
+	</mat-form-field>
+</form>
