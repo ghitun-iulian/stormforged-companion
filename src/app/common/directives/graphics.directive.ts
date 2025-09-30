@@ -121,7 +121,6 @@ export class GraphicsDirective {
     svgElement.removeAttribute('height');
 
     this.applyDimmensions(host, config);
-    console.log(config.overrideColor);
 
     svgElement.setAttribute('fill', color);
     svgElement.setAttribute('width', '100%');

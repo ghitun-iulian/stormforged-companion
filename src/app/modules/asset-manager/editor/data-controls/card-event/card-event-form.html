@@ -1,22 +1,14 @@
-<form [formGroup]="form"
-	class="flex column gap-m">
+<form [formGroup]="form" class="flex column gap-m">
 	<mat-form-field>
 		<mat-label>Title</mat-label>
-		<input matInput
-			formControlName="title">
+		<input matInput formControlName="title">
 	</mat-form-field>
 
-
-	<collection-select [collectionType]="collectionType"
-		class="flex-1"
-		formControlName="art"
-		controllerLabel="Art">
-	</collection-select>
+	<collection-picker formControlName="art" [type]="collectionType" controlLabel="Art"></collection-picker>
 
 
 	<mat-form-field>
 		<mat-label>Description</mat-label>
-		<input matInput
-			formControlName="description">
+		<input matInput formControlName="description">
 	</mat-form-field>
 </form>

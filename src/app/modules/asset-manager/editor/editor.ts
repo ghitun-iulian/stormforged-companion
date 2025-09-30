@@ -47,8 +47,6 @@ import { GraphicsDirective } from '@common/directives';
     HexLocationForm,
     HexExplorationForm,
     HexTrackerForm,
-
-    GraphicsDirective
   ],
   templateUrl: './editor.html',
   styleUrl: './editor.scss',

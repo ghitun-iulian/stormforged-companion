@@ -1,15 +1,17 @@
-<button [matMenuTriggerFor]="menu">
-    <div [imgPath]="'/assets/collection/icon/' + resource + '.svg'"></div>
-    <div class="label flex-1">{{(resource || "Select") | titlecase }}</div>
-</button>
+<div class="resource-selector" [matMenuTriggerFor]="menu">
+    <span class="control-label">Resource</span>
+    <div class="icon" [collectionItem]="resource"></div>
+    <div class="label flex-1">{{resource.label}}.{{resource.filetype}}</div>
 
-
-<mat-menu #menu="matMenu">
-    <div class="resources-grid">
-        @for(resource of resources; track $index){
-        <div class="cell" (click)="setValue(resource)">
-            <div [imgPath]="'/assets/collection/icon/' + resource + '.svg'"></div>
+    <mat-menu #menu="matMenu">
+        <div class="resources-grid">
+            @for(resource of resources(); track $index){
+            <div class="cell" [collectionItem]="resource" (click)="updateResource({label: resource.label})">
+            </div>
+            }
         </div>
-        }
-    </div>
-</mat-menu>
+    </mat-menu>
+</div>
+
+<input class="color-picker" #color type="color" [value]="resource.color"
+    (input)="updateResource({ color: color.value })">

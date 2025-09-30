@@ -15,9 +15,4 @@ export class ExplorationHex {
     width: '50%',
     height: '50%',
   }
-
-  ngOnInit(): void {
-    console.log(this.data());
-  }
-
 }

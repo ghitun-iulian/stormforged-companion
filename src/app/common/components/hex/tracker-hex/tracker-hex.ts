@@ -10,9 +10,4 @@ import { TrackerHexData } from '@common/interfaces';
 })
 export class TrackerHex {
   data = input.required<TrackerHexData>()
-
-  ngOnInit() {
-    console.log(this.data());
-
-  }
 }

@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject } from '@angular/core';
+import { Component, forwardRef, inject, input } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,8 +37,9 @@ import { CommonModule } from '@angular/common';
 export class CollectionPicker implements ControlValueAccessor {
 
   private dialog = inject(MatDialog);
-  collectionType = CollectionType.ICON;
-  controlLabel = 'Icon';
+
+  controlLabel = input<string>('Icon');
+  type = input<CollectionType>(CollectionType.ICON);
 
   emptyItem: CollectionItem2 = {
     type: CollectionType.ICON,
@@ -76,7 +77,7 @@ export class CollectionPicker implements ControlValueAccessor {
       width: '50vw',
     });
 
-    ref.componentInstance.type = this.item.type!;
+    ref.componentInstance.type = this.type() || this.item.type!;
     ref.componentInstance.item = this.item!;
 
     ref.afterClosed().pipe(

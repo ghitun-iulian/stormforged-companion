@@ -33,27 +33,4 @@
         }
     }
 
-    input[type="color"] {
-        width: var(--l);
-        height: var(--l);
-        border: var(--border);
-        border-radius: 50%;
-        cursor: pointer;
-
-        &::-webkit-color-swatch-wrapper {
-            padding: 0;
-        }
-
-        &::-webkit-color-swatch {
-            border: none;
-            border-radius: 50%;
-        }
-
-        &:hover {
-            scale: 1.1;
-        }
-
-    }
-
-
 }

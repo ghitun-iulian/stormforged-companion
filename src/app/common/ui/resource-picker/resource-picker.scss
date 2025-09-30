@@ -1,30 +1,52 @@
 :host {
 
     display: flex;
-    flex-direction: column;
-    
-    button {
+    align-items: center;
+    gap: var(--m);
+
+    .resource-selector {
         display: flex;
+        position: relative;
+        border: var(--border);
+        border-radius: var(--s);
         align-items: center;
-        text-align: left;
+        padding: var(--m);
         gap: var(--m);
-        padding: var(--s);
-        .svg {
-            height: 40px;
+        flex: 1;
+        cursor: pointer;
+
+        .icon {
+            width: var(--l);
             aspect-ratio: 1;
-            fill: var(--text);
+        }
+
+        .control-label {
+            position: absolute;
+            top: -.6rem;
+            left: var(--m);
+            background-color: var(--bg);
+            padding: 0 var(--s);
+
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        &:hover {
+            border: var(--border-highlight);
         }
     }
 
-    
+
 }
 
- .resources-grid {
+.resources-grid {
     display: grid;
     grid-template-columns: repeat(3, 60px);
-    grid-auto-rows: 50px;
+    grid-auto-rows: 60px;
     gap: var(--s);
     padding: var(--s);
+    justify-content: center;
+    overflow-y: auto;
 
     .cell {
         width: 50px;
@@ -32,19 +54,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer; 
+        cursor: pointer;
         border-radius: var(--s);
         transition: background 0.2s ease;
-
-        .svg {
-            fill: var(--accent);
-        }
-
-        &:hover {
-            .svg { 
-                fill: var(--text); 
-            }
-        }
     }
 
 }

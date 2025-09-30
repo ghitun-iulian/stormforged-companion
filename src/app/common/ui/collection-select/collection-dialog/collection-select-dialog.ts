@@ -7,8 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { CollectionService } from '@common/services/collection.service';
 import { BehaviorSubject, tap } from 'rxjs';
-import { CollectionFilters, CollectionItem, CollectionItem2, CollectionType } from '../collection.interface';
-import { ImgDirective } from '@common/directives';
+import { CollectionFilters, CollectionItem, CollectionItem2, CollectionType, emptyItem } from '../collection.interface';
+import { GraphicsDirective, ImgDirective } from '@common/directives';
 
 @Component({
     selector: 'collection-select-dialog',
@@ -20,7 +20,8 @@ import { ImgDirective } from '@common/directives';
         MatButtonModule,
         MatFormField,
         MatInputModule,
-        ImgDirective
+        ImgDirective,
+        GraphicsDirective
     ],
     providers: [CollectionService]
 })
@@ -28,6 +29,8 @@ import { ImgDirective } from '@common/directives';
 export class CollectionSelectDialog {
     private dialogRef = inject(MatDialogRef<CollectionSelectDialog>);
     private collectionService = inject(CollectionService);
+
+    empty = emptyItem;
 
     item!: CollectionItem | CollectionItem2 | null;
     set type(value: CollectionType) {

@@ -10,6 +10,7 @@ import { EventCardData } from '@common/interfaces';
 import { filter, tap } from 'rxjs';
 import { CollectionSelect } from "@common/ui/collection-select/collection-select";
 import { CollectionType } from '@common/ui/collection-select/collection.interface';
+import { CollectionPicker } from "@common/ui/collection-picker/collection-picker";
 
 @Component({
   selector: 'card-event-form',
@@ -20,7 +21,8 @@ import { CollectionType } from '@common/ui/collection-select/collection.interfac
     MatLabel,
     MatInput,
     MatSelectModule,
-    CollectionSelect
+    CollectionSelect,
+    CollectionPicker
   ],
   templateUrl: './card-event-form.html',
   styleUrl: './card-event-form.scss',

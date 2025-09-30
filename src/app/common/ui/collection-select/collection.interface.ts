@@ -1,10 +1,19 @@
+import { accentColor } from "@common/interfaces";
 
 export const collectionPath = '/assets/collection/';
+
 
 export enum CollectionType {
     BACKGROUND = 'background',
     ICON = 'icon',
     ART = 'art',
+}
+
+export const emptyItem: CollectionItem2 = {
+    type: CollectionType.ICON,
+    label: 'empty',
+    filetype: 'svg',
+    color: accentColor,
 }
 
 export interface CollectionItem {

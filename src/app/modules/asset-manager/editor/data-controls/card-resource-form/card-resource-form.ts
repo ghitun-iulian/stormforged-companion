@@ -5,9 +5,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormField, MatSelectModule } from '@angular/material/select';
-import { primaryColor, ResourceCardData } from '@common/interfaces';
+import { GameResources, primaryColor, ResourceCardData } from '@common/interfaces';
 import { ResourcePicker } from '@common/ui/resource-picker/resource-picker';
 import { filter, tap } from 'rxjs';
+import { CollectionPicker } from "@common/ui/collection-picker/collection-picker";
 
 @Component({
   selector: 'card-resource-form',
@@ -16,8 +17,7 @@ import { filter, tap } from 'rxjs';
     ReactiveFormsModule,
     MatSelectModule,
     ResourcePicker,
-    MatFormField,
-    MatInputModule
+    MatInputModule,
   ],
   templateUrl: './card-resource-form.html',
   styleUrl: './card-resource-form.scss',
@@ -34,9 +34,10 @@ export class CardResourceForm implements ControlValueAccessor {
   private fb = inject(FormBuilder);
   private destroyRef = inject(DestroyRef);
 
+  resourceFilter = [GameResources.RELIC]
+
   form: FormGroup = this.fb.group({
     resource: [null, Validators.required],
-    color: [primaryColor]
   });
 
   private onChange: (v: ResourceCardData | null) => void = () => { };

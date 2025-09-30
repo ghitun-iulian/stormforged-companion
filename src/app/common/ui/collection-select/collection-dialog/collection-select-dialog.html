@@ -14,7 +14,7 @@
 
 <div class="items">
 
-  <div class="item empty" (click)="pick()"></div>
+  <div class="item" [collectionItem]="empty" (click)="pick()"></div>
 
   @for(item of items$ | async; track $index){
   <div class="item" (click)="pick(item)">

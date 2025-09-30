@@ -1,5 +1,5 @@
-import { AssetResources, GameResources, ResourceItem } from '@common/interfaces';
-import { CollectionItem } from '@common/ui/collection-select/collection.interface';
+import { ResourceItem } from '@common/interfaces';
+import { CollectionItem, CollectionItem2 } from '@common/ui/collection-select/collection.interface';
 
 
 export enum CardDataTypes {
@@ -10,8 +10,7 @@ export enum CardDataTypes {
 }
 
 export interface ResourceCardData {
-  resource: GameResources;
-  color?: string;
+  resource: CollectionItem2;
 }
 
 export interface EventCardData {
